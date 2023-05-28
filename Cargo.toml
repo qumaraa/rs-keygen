@@ -1,8 +1,8 @@
 [package]
 name = "keygenx"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
-description = "KeyGen - simple customizable and convenient Key Generator. (in development)"
+description = "KeyGen - simple, customizable and convenient Key Generator (beta)"
 
 authors = ["Alexander <qmvscorpio@gmail.com>"]
 license = "MIT"
