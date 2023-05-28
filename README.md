@@ -3,8 +3,8 @@
 Open-source, simple, customizable and convenient **Key Generator** (in development).
 
  [![Version](https://img.shields.io/badge/keygen-0.1.1-pink)]()
- [![Bugs](https://img.shields.io/badge/bugs-fixed-blue)]()
- ![Issues](https://img.shields.io/badge/issues-goto-green)
+ [![Bugs](https://img.shields.io/badge/bugs-fixed-blue)]() 
+ ![Issues](https://img.shields.io/badge/issues-goto-green) 
  ![Authors](https://img.shields.io/badge/author-@alexanderqmv-yellow)
  
  ## Review
@@ -21,6 +21,15 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
     /// `numbers` - a flag that can
     /// enable/disable numbers to key gen.
     numbers: bool,
+    /// `uppercase` - a flag that can 
+    /// enable/disable uppercase symbols to key gen.
+    uppercase: bool,
+    /// `lowercase` - a flag that can
+    /// enable/disable lowercase symbols to key gen.
+    lowercase: bool,
+    /// `space` - a flag that can
+    /// enable/disable space - ` ` to key gen.
+    space: bool,
 }
  ```
  
