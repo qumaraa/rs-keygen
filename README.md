@@ -1,6 +1,6 @@
 
 ## [rs-keygen](https://docs.rs/keygenx/0.1.1/keygenx/)  
-Simple customizable and convenient **Key Generator** (in development).
+Open-source, simple, customizable and convenient **Key Generator** (in development).
 
  [![Version](https://img.shields.io/badge/keygen-0.1.1-pink)]()
  [![Bugs](https://img.shields.io/badge/bugs-fixed-blue)]()
