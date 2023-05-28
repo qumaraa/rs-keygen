@@ -1,3 +1,21 @@
+//! # KeyGen v0.1.0 (beta)
+//! Simple customizable and convenient Key Generator. (in development).
+//! 
+//! By using `KeyGen` you can generate the keys of any size,enable/disable symbols and numbers and much more that will appear in the future.
+//! # Example
+//! ```
+//! fn main() { 
+//!     let mut kg = KeyGen::new()
+//!         .length(10) // by default `length == 8`
+//!         .symbols(true) // by default `symbols == false`
+//!         .numbers(true); // by default `numbers == false`
+//!     let gen_key = kg.gen_one().unwrap();
+//!    
+//!     println!("Generated key: {gen_key}")
+//! }
+//! 
+//! ```
+//!     
 use rand::{thread_rng, Rng};
 use std::env::args;
 
