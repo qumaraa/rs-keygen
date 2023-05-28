@@ -45,7 +45,7 @@ impl KeyGen {
     pub fn new() -> Self {
         KeyGen {
             /// `Default` length of `key` = 8
-            length: 8,
+            length: 0,
             // `Default` `symbols` state = false
             symbols: false,
             // `Default` `numbers` state = false
