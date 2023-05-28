@@ -16,7 +16,11 @@
 //! 
 //! 
 //! ```
-use rand::{thread_rng, Rng};
+use rand::{
+    thread_rng, 
+    Rng
+};
+
 /// [`KeyGen`] - struct contains the main logic of Key Generator
 pub struct KeyGen {
     /// `length` - key length
@@ -30,6 +34,9 @@ pub struct KeyGen {
     /// `uppercase` - a flag that can
     /// enable/disable uppercase symbols to key gen.
     uppercase: bool,
+    /// `lowercase` - a flag that can
+    /// enable/disable lowercase symbols to key gen.
+    lowercase: bool,
 }
 
 /// [`KeyGen`] implementation
@@ -37,10 +44,16 @@ impl KeyGen {
     /// constructor which returns `Self` with default parameters.
     pub fn new() -> Self {
         KeyGen {
+            /// `Default` length of `key` = 8
             length: 8,
+            // `Default` `symbols` state = false
             symbols: false,
+            // `Default` `numbers` state = false
             numbers: false,
+            // `Default` `uppercase` state = false
             uppercase: false,
+            // `Default` `lowercase` state = false
+            lowercase: false,
         }
     }
     /// changes the value  of `length` to value from parameter
@@ -58,28 +71,49 @@ impl KeyGen {
         self.numbers = numbers;
         self
     }
+    /// changes the boolean value (state)  of `uppercase` to value from parameter
     pub fn uppercase(mut self, uppercase: bool) -> Self {
         self.uppercase = uppercase;
         self
     }
+    /// changes the boolean value (state)  of `lowercase` to value from parameter
+    pub fn lowercasecase(mut self, lowercase: bool) -> Self {
+        self.lowercase = lowercase;
+        self
+    }
     /// generates the random chars and collects 
     /// them into `String` and returns as `Result<T,E>`
+    #[inline]
     pub fn gen_one(&mut self) -> Result<String, &'static str> {
         if self.length == 0 {
             return Err("length of the password should be more than `0`");
         } 
         let mut rng = thread_rng();
-        let mut chars = String::from("abcdefghijklmnopqrstuvwxyz");
-        
-        if self.numbers == true {
+        let mut chars = String::new();
+        // if `self.numbers == true` push the numbers into `chars` (String)
+        if self.numbers {
             chars.push_str("1234567890");
         }
-        if self.symbols == true {
+        // if `self.symbols == true` push the symbols into `chars` (String)
+        if self.symbols {
             chars.push_str("!@#$%^&*()-+/[].?:");
         }
-        if self.uppercase == true { 
+        // if `self.uppercase == true` push the uppercase letters into `chars` (String)
+        if self.uppercase { 
             chars.push_str("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         }
+        // if `self.lowercase == true` push the lowercase letters into `chars` (String)
+        if self.lowercase {
+            chars.push_str("abcdefghijklmnopqrstuvwxyz");
+        }
+        // if none of the attributes are marked as true, we return an error
+        if !self.numbers 
+            && !self.symbols
+            && !self.uppercase
+            && !self.lowercase {
+                return Err("At least one state should be `true`.");
+            }
+            
         let key: String = (0..self.length)
             .map(|_| {
                 let idx = rng.gen_range(0..chars.len());
