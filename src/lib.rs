@@ -44,7 +44,7 @@ impl KeyGen {
     /// constructor which returns `Self` with default parameters.
     pub fn new() -> Self {
         KeyGen {
-            /// `Default` length of `key` = 8
+            /// `Default` length of `key` = 8 
             length: 0,
             // `Default` `symbols` state = false
             symbols: false,
