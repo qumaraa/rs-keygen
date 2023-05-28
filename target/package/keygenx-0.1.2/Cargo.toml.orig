@@ -1,0 +1,15 @@
+[package]
+name = "keygenx"
+version = "0.1.2"
+edition = "2021"
+description = "KeyGen - simple, customizable and convenient Key Generator (beta)"
+
+authors = ["Alexander <qmvscorpio@gmail.com>"]
+license = "MIT"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+readme = "README.md"
+
+
+[dependencies]
+rand = "0.8.5"
