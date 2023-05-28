@@ -4,7 +4,7 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
 
  [![Version](https://img.shields.io/badge/keygen-0.1.1-pink)]()
  [![Bugs](https://img.shields.io/badge/bugs-fixed-blue)]() 
- ![Issues](https://img.shields.io/badge/issues-goto-green)
+ ![Issues](https://img.shields.io/badge/issues-goto-green) 
  ![Authors](https://img.shields.io/badge/author-@alexanderqmv-yellow)
  
  ## Review
