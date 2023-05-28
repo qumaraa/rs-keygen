@@ -1,20 +1,34 @@
-//! # KeyGen v0.1.1 (beta)
-//! Simple customizable and convenient Key Generator. (in development).
+//! # KeyGen v0.1.2 (beta)
+//! Simple, customizable and convenient Key Generator. (in development).
+//!
+//! By using `KeyGen` you can generate the keys of any size,enable/disable symbols, numbers, spaces, uppercase/lowercase letters, etc.
+//! # Features
 //! 
-//! By using `KeyGen` you can generate the keys of any size,enable/disable symbols and numbers and much more that will appear in the future.
+//! * Bug fixes
+//! * Code optimization
+//! * New features added (`space` state, `gen` method)
+//! Thank you for you help & support!
+//! 
 //! # Example
-//! ```
-//! fn main() { 
-//!     let mut kg = KeyGen::new()
-//!         .length(10) // by default `length == 8`
-//!         .symbols(true) // by default `symbols == false`
-//!         .numbers(true); // by default `numbers == false`
-//!     let gen_key = kg.gen_one().unwrap();
-//!    
-//!     println!("Generated key: {gen_key}")
-//! }
+//! ``` 
+//! fn main() {
+//!     let mut gen_range = KeyGen::new()
+//!         .length(11)
+//!         .numbers(true)
+//!         .symbols(true)
+//!         .uppercase(true)
+//!         .lowercase(true)
+//!         .space(true);
 //! 
-//! 
+//!    let res = gen_range
+//!         .gen_one()
+//!         .unwrap();
+//!    println!("{res}");
+//!    let res2 = gen_range
+//!         .gen(5)
+//!         .unwrap();
+//!    println!("{res2:?}");
+//!}
 //! ```
 use rand::{
     thread_rng, 
@@ -37,6 +51,9 @@ pub struct KeyGen {
     /// `lowercase` - a flag that can
     /// enable/disable lowercase symbols to key gen.
     lowercase: bool,
+    /// `space` - a flag that can
+    /// enable/disable space - ` ` to key gen.
+    space: bool,
 }
 
 /// [`KeyGen`] implementation
@@ -44,16 +61,18 @@ impl KeyGen {
     /// constructor which returns `Self` with default parameters.
     pub fn new() -> Self {
         KeyGen {
-            /// `Default` length of `key` = 8 
+            /// `Default` length of `key` = 8
             length: 0,
-            // `Default` `symbols` state = false
+            /// `Default` `symbols` state = false
             symbols: false,
-            // `Default` `numbers` state = false
+            /// `Default` `numbers` state = false
             numbers: false,
-            // `Default` `uppercase` state = false
+            /// `Default` `uppercase` state = false
             uppercase: false,
-            // `Default` `lowercase` state = false
+            /// `Default` `lowercase` state = false
             lowercase: false,
+            /// `Default` `space` state = false
+            space: false,
         }
     }
     /// changes the value  of `length` to value from parameter
@@ -77,17 +96,22 @@ impl KeyGen {
         self
     }
     /// changes the boolean value (state)  of `lowercase` to value from parameter
-    pub fn lowercasecase(mut self, lowercase: bool) -> Self {
+    pub fn lowercase(mut self, lowercase: bool) -> Self {
         self.lowercase = lowercase;
         self
     }
-    /// generates the random chars and collects 
+    /// changes the boolean value (state)  of `space` to value from parameter
+    pub fn space(mut self, space: bool) -> Self {
+        self.space = space;
+        self
+    }
+    /// generates the random chars and collects
     /// them into `String` and returns as `Result<T,E>`
     #[inline]
     pub fn gen_one(&mut self) -> Result<String, &'static str> {
         if self.length == 0 {
             return Err("length of the password should be more than `0`");
-        } 
+        }
         let mut rng = thread_rng();
         let mut chars = String::new();
         // if `self.numbers == true` push the numbers into `chars` (String)
@@ -99,55 +123,115 @@ impl KeyGen {
             chars.push_str("!@#$%^&*()-+/[].?:");
         }
         // if `self.uppercase == true` push the uppercase letters into `chars` (String)
-        if self.uppercase { 
+        if self.uppercase {
             chars.push_str("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         }
         // if `self.lowercase == true` push the lowercase letters into `chars` (String)
         if self.lowercase {
             chars.push_str("abcdefghijklmnopqrstuvwxyz");
         }
+        
+        // if `self.space == true` push the space into `chars` (String)
+        if self.space {
+            chars.push_str(" ");
+        }
         // if none of the attributes are marked as true, we return an error
-        if !self.numbers 
-            && !self.symbols
-            && !self.uppercase
-            && !self.lowercase {
-                return Err("At least one state should be `true`.");
-            }
-            
+        if !self.numbers && !self.symbols && !self.uppercase && !self.lowercase {
+            return Err("At least one state should be `true`.");
+        }
+
         let key: String = (0..self.length)
             .map(|_| {
-                let idx = rng.gen_range(0..chars.len());
-                chars.chars().nth(idx).unwrap()
+                let idx = rng
+                    .gen_range(0..chars.len());
+                chars
+                    .chars()
+                    .nth(idx)
+                    .unwrap()
             })
             .collect();
         Ok(key)
     }
+
+    /// Generates `n` passwords of type `usize` and returns as `Result<Vec<String>, &'static str>`
+    pub fn gen(&mut self, n: usize) -> Result<Vec<String>, &'static str> {
+        if self.length == 0 {
+            return Err("length of the password should be more than `0`");
+        }
+        let mut rng = thread_rng();
+
+        let mut chars = String::from("abcdefghjklmnopqrstuvwxyz");
+        let mut key: Vec<String> = Vec::new();
+
+        // if `self.numbers == true` push the numbers into `chars` (String)
+        if self.numbers {
+            chars.push_str("1234567890");
+        }
+        // if `self.symbols == true` push the symbols into `chars` (String)
+        if self.symbols {
+            chars.push_str("!@#$%^&*()-+/[].?:");
+        }
+        // if `self.uppercase == true` push the uppercase letters into `chars` (String)
+        if self.uppercase {
+            chars.push_str("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        }
+        // if `self.lowercase == true` push the lowercase letters into `chars` (String)
+        if self.lowercase {
+            chars.push_str("abcdefghijklmnopqrstuvwxyz");
+        }
+        if self.space {
+            chars.push_str(" ");
+        }
+        // if none of the attributes are marked as true, we return an error
+        if !self.numbers 
+            && !self.symbols 
+            && !self.uppercase 
+            && !self.lowercase {
+            return Err("At least one state should be `true`.");
+        }
+
+        for _ in 0..n {
+            let k: String = (0..self.length)
+                .map(|_| {
+                    let idx = rng
+                        .gen_range(0..chars.len());
+                    chars
+                        .chars()
+                        .nth(idx)
+                        .unwrap()
+                })
+                .collect();
+            key.push(k);
+        }
+        Ok(key)
+    }
 }
+
 #[cfg(test)]
-mod tests 
-{
+mod tests {
+    /// Tests
     use super::*;
     #[test]
+    /// default keygen test
     fn test_keygen_def() {
-        let mut kg = KeyGen::new();
+        let mut kg = KeyGen::new().lowercase(true).length(11);
         let gen_key = kg.gen_one().unwrap();
-        assert_eq!(gen_key.len(), 8);
-        assert_eq!(kg.length, 8);
+        assert_eq!(gen_key.len(), 11);
+        assert_eq!(kg.length, 11);
         assert_eq!(kg.symbols, false);
         assert_eq!(kg.numbers, false);
+        assert_eq!(kg.space, false);
+        assert_eq!(kg.lowercase, true);
+        assert_eq!(kg.uppercase,false);
     }
 
     #[test]
-    fn test_keygen() { 
-        let mut kg = KeyGen::new()
-            .length(10)
-            .symbols(true)
-            .numbers(true);
+    fn test_keygen() {
+        let mut kg = KeyGen::new().length(10).symbols(true).numbers(true);
         let gen_key = kg.gen_one().unwrap();
         assert_eq!(gen_key.len(), 10);
         assert_eq!(kg.length, 10);
         assert_eq!(kg.symbols, true);
         assert_eq!(kg.numbers, true);
     }
-
 }
