@@ -9,7 +9,7 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
  
  ## Review
  * **`gen_one`** - **Generate one key** (**returns** **`Result<String, &'static str`**)
- * **`generate`** - **Generates the `nth` number of keys (-`n` is passed in the argument)**
+ * **`gen`** - **Generates the `nth` number of keys (-`n` is passed in the argument)**
  
  ```rs
  pub struct KeyGen {
