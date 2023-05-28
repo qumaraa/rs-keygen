@@ -1,4 +1,4 @@
-//! # KeyGen v0.1.0 (beta)
+//! # KeyGen v0.1.1 (beta)
 //! Simple customizable and convenient Key Generator. (in development).
 //! 
 //! By using `KeyGen` you can generate the keys of any size,enable/disable symbols and numbers and much more that will appear in the future.
@@ -14,13 +14,15 @@
 //!     println!("Generated key: {gen_key}")
 //! }
 //! 
+//! 
 //! ```
 //!     
 use rand::{thread_rng, Rng};
 use std::env::args;
 
-/// [`KeyGen`] logic
-struct KeyGen {
+
+/// [`KeyGen`] - struct contains the main logic of Key Generator
+pub struct KeyGen {
     /// `length` - key length
     length: usize,
     /// `symbols` - a flag that can
@@ -35,7 +37,7 @@ struct KeyGen {
 impl KeyGen {
     /// constructor which returns `Self`
     /// with default parameters.
-    fn new() -> Self {
+    pub fn new() -> Self {
         KeyGen {
             length: 8,
             symbols: false,
@@ -43,23 +45,23 @@ impl KeyGen {
         }
     }
     /// changes the value  of `length` to value from parameter
-    fn length(mut self, length: usize) -> Self {
+    pub fn length(mut self, length: usize) -> Self {
         self.length = length;
         self
     }
     /// changes the boolean value (state) of `symbols` to value from parameter
-    fn symbols(mut self, symbols: bool) -> Self {
+    pub fn symbols(mut self, symbols: bool) -> Self {
         self.symbols = symbols;
         self
     }
     /// changes the boolean value (state)  of `symbols` to value from parameter
-    fn numbers(mut self, numbers: bool) -> Self {
+    pub fn numbers(mut self, numbers: bool) -> Self {
         self.numbers = numbers;
         self
     }
     /// generates the random chars and collects 
     /// them into `String` and returns as `Result<T,E>`
-    fn gen_one(&mut self) -> Result<String, &'static str> {
+    pub fn gen_one(&mut self) -> Result<String, &'static str> {
         if self.length == 0 {
             return Err("length of the password should be more than `0`");
         } 
