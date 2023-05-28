@@ -24,7 +24,8 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
 }
  ```
  
- ### [See more](https://docs.rs/keygenx/0.1.1/keygenx/) 
+ ## [Documentation](https://docs.rs/keygenx/0.1.1/keygenx/) 
+ The main doc is available at `docs.rs`. There you can read and discover examples and source-code of `rs-keygen` aka `keygenx`
  
  ## Contributing
 **`KeyGen` open for contribution.** 
