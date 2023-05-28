@@ -1,5 +1,5 @@
 [package]
-name = "keygen"
+name = "keygenx"
 version = "0.1.0"
 edition = "2021"
 description = "KeyGen - simple customizable and convenient Key Generator. (in development)"
