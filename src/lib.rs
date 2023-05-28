@@ -16,11 +16,7 @@
 //! 
 //! 
 //! ```
-//!     
 use rand::{thread_rng, Rng};
-use std::env::args;
-
-
 /// [`KeyGen`] - struct contains the main logic of Key Generator
 pub struct KeyGen {
     /// `length` - key length
@@ -31,17 +27,20 @@ pub struct KeyGen {
     /// `numbers` - a flag that can
     /// enable/disable numbers to key gen.
     numbers: bool,
+    /// `uppercase` - a flag that can
+    /// enable/disable uppercase symbols to key gen.
+    uppercase: bool,
 }
 
 /// [`KeyGen`] implementation
 impl KeyGen {
-    /// constructor which returns `Self`
-    /// with default parameters.
+    /// constructor which returns `Self` with default parameters.
     pub fn new() -> Self {
         KeyGen {
             length: 8,
             symbols: false,
             numbers: false,
+            uppercase: false,
         }
     }
     /// changes the value  of `length` to value from parameter
@@ -59,6 +58,10 @@ impl KeyGen {
         self.numbers = numbers;
         self
     }
+    pub fn uppercase(mut self, uppercase: bool) -> Self {
+        self.uppercase = uppercase;
+        self
+    }
     /// generates the random chars and collects 
     /// them into `String` and returns as `Result<T,E>`
     pub fn gen_one(&mut self) -> Result<String, &'static str> {
@@ -66,14 +69,16 @@ impl KeyGen {
             return Err("length of the password should be more than `0`");
         } 
         let mut rng = thread_rng();
-        let mut chars = String::from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        let mut chars = String::from("abcdefghijklmnopqrstuvwxyz");
         
         if self.numbers == true {
             chars.push_str("1234567890");
         }
-        
         if self.symbols == true {
             chars.push_str("!@#$%^&*()-+/[].?:");
+        }
+        if self.uppercase == true { 
+            chars.push_str("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         }
         let key: String = (0..self.length)
             .map(|_| {
