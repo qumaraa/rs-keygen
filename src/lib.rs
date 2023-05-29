@@ -109,10 +109,49 @@ impl KeyGen {
     /// them into `String` and returns as `Result<T,E>`
     #[inline]
     pub fn gen_one(&mut self) -> Result<String, &'static str> {
+        let chars = self.try_str().unwrap();
+
+        let mut rng = thread_rng();
+        let key: String = (0..self.length)
+            .map(|_| {
+                let idx = rng
+                    .gen_range(0..chars.len());
+                chars
+                    .chars()
+                    .nth(idx)
+                    .unwrap()
+            })
+            .collect();
+        Ok(key)
+    }
+    
+    /// Generates `n` passwords of type `usize` and returns as `Result<Vec<String>, &'static str>`
+    pub fn gen(&mut self, n: usize) -> Result<Vec<String>, &'static str> {
+        let chars = self.try_str().unwrap();
+        let mut key: Vec<String> = Vec::new();
+        let mut rng = thread_rng();
+        
+        for _ in 0..n {
+            let k: String = (0..self.length)
+                .map(|_| {
+                    let idx = rng
+                        .gen_range(0..chars.len());
+                    chars
+                        .chars()
+                        .nth(idx)
+                        .unwrap()
+                })
+                .collect();
+            key.push(k);
+        }
+        Ok(key)
+    }
+    /// `try_str` contains one logic for both `gen_one()` and `gen()`.
+    pub fn try_str(&mut self) -> Result<String, &'static str> {
         if self.length == 0 {
             return Err("length of the password should be more than `0`");
         }
-        let mut rng = thread_rng();
+        
         let mut chars = String::new();
         // if `self.numbers == true` push the numbers into `chars` (String)
         if self.numbers {
@@ -139,72 +178,12 @@ impl KeyGen {
         if !self.numbers && !self.symbols && !self.uppercase && !self.lowercase {
             return Err("At least one state should be `true`.");
         }
-
-        let key: String = (0..self.length)
-            .map(|_| {
-                let idx = rng
-                    .gen_range(0..chars.len());
-                chars
-                    .chars()
-                    .nth(idx)
-                    .unwrap()
-            })
-            .collect();
-        Ok(key)
+        Ok(chars)
     }
 
-    /// Generates `n` passwords of type `usize` and returns as `Result<Vec<String>, &'static str>`
-    pub fn gen(&mut self, n: usize) -> Result<Vec<String>, &'static str> {
-        if self.length == 0 {
-            return Err("length of the password should be more than `0`");
-        }
-        let mut rng = thread_rng();
 
-        let mut chars = String::from("abcdefghjklmnopqrstuvwxyz");
-        let mut key: Vec<String> = Vec::new();
 
-        // if `self.numbers == true` push the numbers into `chars` (String)
-        if self.numbers {
-            chars.push_str("1234567890");
-        }
-        // if `self.symbols == true` push the symbols into `chars` (String)
-        if self.symbols {
-            chars.push_str("!@#$%^&*()-+/[].?:");
-        }
-        // if `self.uppercase == true` push the uppercase letters into `chars` (String)
-        if self.uppercase {
-            chars.push_str("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        }
-        // if `self.lowercase == true` push the lowercase letters into `chars` (String)
-        if self.lowercase {
-            chars.push_str("abcdefghijklmnopqrstuvwxyz");
-        }
-        if self.space {
-            chars.push_str(" ");
-        }
-        // if none of the attributes are marked as true, we return an error
-        if !self.numbers 
-            && !self.symbols 
-            && !self.uppercase 
-            && !self.lowercase {
-            return Err("At least one state should be `true`.");
-        }
 
-        for _ in 0..n {
-            let k: String = (0..self.length)
-                .map(|_| {
-                    let idx = rng
-                        .gen_range(0..chars.len());
-                    chars
-                        .chars()
-                        .nth(idx)
-                        .unwrap()
-                })
-                .collect();
-            key.push(k);
-        }
-        Ok(key)
-    }
 }
 
 #[cfg(test)]
