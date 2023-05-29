@@ -126,6 +126,7 @@ impl KeyGen {
     }
     
     /// Generates `n` passwords of type `usize` and returns as `Result<Vec<String>, &'static str>`
+    #[inline]
     pub fn gen(&mut self, n: usize) -> Result<Vec<String>, &'static str> {
         let chars = self.try_str().unwrap();
         let mut key: Vec<String> = Vec::new();
