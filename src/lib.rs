@@ -1,4 +1,4 @@
-//! # KeyGen v0.1.2 (beta)
+//! # KeyGen v0.1.4 (beta)
 //! Simple, customizable and convenient Key Generator. (in development).
 //!
 //! By using `KeyGen` you can generate the keys of any size,enable/disable symbols, numbers, spaces, uppercase/lowercase letters, etc.
@@ -148,7 +148,7 @@ impl KeyGen {
         Ok(key)
     }
     /// `try_str` contains one logic for both `gen_one()` and `gen()`.
-    pub fn try_str(&mut self) -> Result<String, &'static str> {
+    fn try_str(&mut self) -> Result<String, &'static str> {
         if self.length == 0 {
             return Err("length of the password should be more than `0`");
         }
