@@ -1,11 +1,11 @@
 
-## [rs-keygen](https://docs.rs/keygenx/0.1.1/keygenx/)  
+## [rs-keygen](https://docs.rs/keygenx/0.1.4/keygenx/)  
 Open-source, simple, customizable and convenient **Key Generator** (in development).
 
- [![Version](https://img.shields.io/badge/keygen-0.1.1-pink)]()
- [![Bugs](https://img.shields.io/badge/bugs-fixed-blue)]() 
- ![Issues](https://img.shields.io/badge/issues-goto-green) 
- ![Authors](https://img.shields.io/badge/author-@alexanderqmv-yellow)
+ [![Version](https://img.shields.io/badge/keygen-0.1.4-gray)]()
+ [![Bugs](https://img.shields.io/badge/bugs-fixed-gray)]() 
+ ![Issues](https://img.shields.io/badge/issues-goto-gray) 
+ ![Authors](https://img.shields.io/badge/author-@alexanderqmv-gray)
  
  ## Review
  * **`gen_one`** - **Generate one key** (**returns** **`Result<String, &'static str`**)
