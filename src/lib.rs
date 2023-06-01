@@ -30,10 +30,23 @@
 //!    println!("{res2:?}");
 //!}
 //! ```
+//! # Hasher 
+//! `Hasher` -  is a tool that allows you to get a hash of the generated key using 2 algorithms for this: `Sha256` & `Md5`. Connects using `features = "crypto"`
+//! Dependencies: `rust-crypto = "0.2.36"`
+//! ## Example
+//! ```
+//! fn main() { 
+//!    /*...*/
+//!    let mut hasher = crypto::hash::Hasher::new();
+//!    let res = hasher.hash_by_sha256(&key_str);
+//!    println!("{}", res);
+//! }
+//! ```
 
 
 mod generator;
 use generator::Key::KeyGen;
+#[cfg(feature = "test")]
 mod tests;
 #[cfg(feature = "crypto")]
-mod hasher;
+mod crypto;
