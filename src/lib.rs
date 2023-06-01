@@ -56,6 +56,19 @@ pub struct KeyGen {
     space: bool,
 }
 
+/// Conspect of "Hash" 
+struct Hasher {}
+impl Hasher {
+   fn hash_by_sha256(key: &String) -> String 
+   {
+      // hashing algorithm
+   }
+   fn hash_by_md5(key: &String) -> String {
+      // hashing algorithm
+   }
+}
+    
+
 /// [`KeyGen`] implementation
 impl KeyGen {
     /// constructor which returns `Self` with default parameters.
