@@ -1,10 +1,9 @@
 pub mod Key {
-    
     use rand::{
         thread_rng,
         Rng};
-    
     /// [`KeyGen`] - struct contains the main logic of Key Generator
+    
     pub struct KeyGen {
         /// `length` - key length
         pub length: usize,
