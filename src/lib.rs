@@ -59,11 +59,11 @@ pub struct KeyGen {
 /// Conspect of "Hash" 
 struct Hasher {}
 impl Hasher {
-   fn hash_by_sha256(key: &String) -> String 
+   fn hash_with_sha256(key: &String) -> String 
    {
       // hashing algorithm
    }
-   fn hash_by_md5(key: &String) -> String {
+   fn hash_with_md5(key: &String) -> String {
       // hashing algorithm
    }
 }
