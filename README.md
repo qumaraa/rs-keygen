@@ -2,7 +2,7 @@
 ## [rs-keygen](https://docs.rs/keygenx/0.1.4/keygenx/)  
 Open-source, simple, customizable and convenient **Key Generator** (in development).
 
- [![Version](https://img.shields.io/badge/keygen-0.1.4-gray)]()
+ [![Version](https://img.shields.io/badge/keygen-0.1.71-gray)]()
  [![Bugs](https://img.shields.io/badge/bugs-fixed-gray)]() 
  ![Issues](https://img.shields.io/badge/issues-goto-gray) 
  ![Authors](https://img.shields.io/badge/author-@alexanderqmv-gray) 
