@@ -63,6 +63,7 @@ impl Hasher {
    {
       // hashing algorithm
    }
+   
    fn hash_with_md5(key: &String) -> String {
       // hashing algorithm
    }
