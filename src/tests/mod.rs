@@ -1,10 +1,11 @@
 #[cfg(test)]
-mod tests {
+pub mod tests {
     /// Tests
-    use super::super::KeyGen;
+    pub use super::super::KeyGen;
     #[test]
+    
     /// default keygen test
-    fn test_keygen_def() {
+    pub fn test_keygen_def() {
         let mut kg = KeyGen::new().lowercase(true).length(11);
         let gen_key = kg.gen_one().unwrap();
         assert_eq!(gen_key.len(), 11);
@@ -17,7 +18,7 @@ mod tests {
     }
 
     #[test]
-    fn test_keygen() {
+    pub fn test_keygen() {
         let mut kg = KeyGen::new().length(10).symbols(true).numbers(true);
         let gen_key = kg.gen_one().unwrap();
         assert_eq!(gen_key.len(), 10);
