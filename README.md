@@ -1,11 +1,16 @@
 
-## [rs-keygen](https://docs.rs/keygenx/0.1.4/keygenx/)  
+## [rs-keygen](https://docs.rs/keygenx/0.1.72/keygenx/)  
 Open-source, simple, customizable and convenient **Key Generator** (in development).
 
  [![Version](https://img.shields.io/badge/keygen-0.1.71-gray)]()
  [![Bugs](https://img.shields.io/badge/bugs-fixed-gray)]() 
  ![Issues](https://img.shields.io/badge/issues-goto-gray) 
  ![Authors](https://img.shields.io/badge/author-@alexanderqmv-gray) 
+ ## Features
+* Splitting the code into separate `mod`ules
+* Added a new hashing structure - `Hasher`
+* Bugs fixed
+
  ## Review
  ### Generator
  * **`gen_one`** - **Generate one key** (**returns** **`Result<String, &'static str`**)
@@ -37,7 +42,7 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
 }
  ```
  
- ## [Documentation](https://docs.rs/keygenx/0.1.1/keygenx/) 
+ ## [Documentation](https://docs.rs/keygenx/0.1.72/keygenx/) 
  The main doc is available at `docs.rs`.
  
  ## Contributing
