@@ -5,12 +5,16 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
  [![Version](https://img.shields.io/badge/keygen-0.1.4-gray)]()
  [![Bugs](https://img.shields.io/badge/bugs-fixed-gray)]() 
  ![Issues](https://img.shields.io/badge/issues-goto-gray) 
- ![Authors](https://img.shields.io/badge/author-@alexanderqmv-gray)
- 
+ ![Authors](https://img.shields.io/badge/author-@alexanderqmv-gray) 
  ## Review
+ ### Generator
  * **`gen_one`** - **Generate one key** (**returns** **`Result<String, &'static str`**)
  * **`gen`** - **Generates the `nth` number of keys (-`n` is passed in the argument)**
  
+### Hasher
+* **`hash_with_sha256` - parses key-string to sha256 hash**
+ 
+* **`hash_with_md5` - parses key-string to md5 hash**
  ```rs
  pub struct KeyGen {
     /// `length` - key length

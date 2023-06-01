@@ -33,7 +33,7 @@ dependencies = [
 
 [[package]]
 name = "keygenx"
-version = "0.1.7"
+version = "0.1.71"
 dependencies = [
  "rand 0.8.5",
  "rust-crypto",

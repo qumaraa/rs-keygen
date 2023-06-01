@@ -1,6 +1,6 @@
 [package]
 name = "keygenx"
-version = "0.1.7"
+version = "0.1.71"
 edition = "2021"
 description = "KeyGen - simple, customizable and convenient Key Generator (beta)"
 
@@ -13,6 +13,7 @@ readme = "README.md"
 
 [dependencies]
 rand = "0.8.5"
+
 
 rust-crypto = "0.2.36"
 [features]

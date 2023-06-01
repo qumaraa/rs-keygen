@@ -1,4 +1,4 @@
-//! # KeyGen v0.1.2 (beta)
+//! # KeyGen v0.1.71 (beta)
 //! Simple, customizable and convenient Key Generator. (in development).
 //!
 //! By using `KeyGen` you can generate the keys of any size,enable/disable symbols, numbers, spaces, uppercase/lowercase letters, etc.
@@ -44,9 +44,8 @@
 //! ```
 
 
-mod generator;
-use generator::Key::KeyGen;
+pub mod generator;
 #[cfg(feature = "test")]
-mod tests;
+pub mod tests;
 #[cfg(feature = "crypto")]
-mod crypto;
+pub mod crypto;
