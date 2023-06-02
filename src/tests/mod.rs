@@ -1,7 +1,7 @@
 #[cfg(test)]
 pub mod tests {
     /// Tests
-    pub use super::super::KeyGen;
+    pub use super::super::generator::KeyGen;
     #[test]
     
     /// default keygen test

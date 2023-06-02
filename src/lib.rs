@@ -42,9 +42,8 @@
 //!    println!("{}", res);
 //! }
 //! ```
-
+pub mod generator;
 #[cfg(feature = "crypto")]
 pub mod crypto;
-pub mod generator;
 #[cfg(feature = "test")]
 pub mod tests;
