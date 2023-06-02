@@ -20,6 +20,12 @@ Open-source, simple, customizable and convenient **Key Generator** (in developme
 * **`hash_with_sha256` - parses key-string to sha256 hash**
  
 * **`hash_with_md5` - parses key-string to md5 hash**
+
+
+### Cargo.toml
+```toml
+keygenx = { version = ">= 0.1.72", features = ["crypto", "tests"] }
+```
  ```rs
  pub struct KeyGen {
     /// `length` - key length
