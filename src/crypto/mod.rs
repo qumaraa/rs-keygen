@@ -1,4 +1,4 @@
-//! [`Hash`] - scope (or module) where is the `Hasher` structure located 
+/// [`Hash`] - scope (or module) where is the `Hasher` structure located 
 pub mod Hash {
     use crypto::{
         digest::Digest,
