@@ -3,15 +3,15 @@ use rand::{thread_rng, Rng};
 /// [`KeyGen`] - struct contains the main logic of Key Generator
 
 pub struct KeyGen {
-    //! `length` - key length
+    /// `length` - key length
     pub length: usize,
-    //! `symbols` - a flag that can enable/disable symbols to key gen.
+    /// `symbols` - a flag that can enable/disable symbols to key gen.
     pub symbols: bool,
-    //! `numbers` - a flag that can enable/disable numbers to key gen.
+    /// `numbers` - a flag that can enable/disable numbers to key gen.
     pub numbers: bool,
-    //! `uppercase` - a flag that can enable/disable uppercase symbols to key gen.
+    /// `uppercase` - a flag that can enable/disable uppercase symbols to key gen.
     pub uppercase: bool,
-    //! `lowercase` - a flag that can enable/disable lowercase symbols to key gen.
+    /// `lowercase` - a flag that can enable/disable lowercase symbols to key gen.
     pub lowercase: bool,
     /// `space` - a flag that can enable/disable space - ` ` to key gen.
     pub space: bool,
